@@ -42,7 +42,7 @@ pipeline {
         }
         stage('Docker Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_CRED', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_ILA_CRED', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     echo "Pushing Docker Image to DockerHub: ${env.IMAGE_NAME}"
                     sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                     sh "docker push ${env.IMAGE_NAME}"
